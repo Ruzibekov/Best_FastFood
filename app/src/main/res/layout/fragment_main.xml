@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.fragments.MainFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:translationZ="50dp"
+        app:cardElevation="1dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_main_fragment"
+            style="@style/Widget.AppCompat.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_app" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="NeedFood"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="34dp"
+                app:cardCornerRadius="22dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_search" />
+            </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.Toolbar>
+    </androidx.cardview.widget.CardView>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image"
+                    android:layout_width="400dp"
+                    android:layout_height="122dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/banner_01"
+                    app:riv_corner_radius="10dp" />
+
+                <TextView
+                    android:id="@+id/banner_title"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineHeight="27dp"
+                    android:maxLines="2"
+                    android:text="Paket Cheese Burger komplit"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="95dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/banner_title"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/back_banner_button"
+                    android:text="Order Now"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+
+            <include
+                android:id="@+id/main_screen"
+                layout="@layout/item_main_screen"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

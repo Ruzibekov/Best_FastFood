@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.makeramen.roundedimageview.RoundedImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="230dp"
+    android:layout_height="150dp"
+    android:id="@+id/recommended_product_image"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:riv_corner_radius="20dp"
+    android:scaleType="centerCrop"
+    android:layout_marginTop="15dp"
+    android:layout_marginHorizontal="15dp"
+    android:src="@drawable/image_big_burger">
+
+</com.makeramen.roundedimageview.RoundedImageView>

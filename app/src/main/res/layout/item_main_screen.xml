@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/Title_TextView"
+        android:layout_marginStart="24dp"
+        android:text="Categories" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categories_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_categories" />
+
+    <TextView
+        style="@style/Title_TextView"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Popular Now" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_now_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_popular_now" />
+
+    <TextView
+        android:layout_marginTop="0dp"
+        style="@style/Title_TextView"
+        android:layout_marginStart="24dp"
+        android:text="Recommended" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommended_list"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_recommended" />
+
+</LinearLayout>
