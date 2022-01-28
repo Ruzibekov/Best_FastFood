@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentDescriptionBinding
-import com.ruzibekov.needfood_r.objects.Product
+import com.ruzibekov.needfood_r.domain.models.Product
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private lateinit var binding: FragmentDescriptionBinding

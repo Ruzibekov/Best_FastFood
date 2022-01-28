@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.interfaces.ProductItemClick
-import com.ruzibekov.needfood_r.objects.Product
+import com.ruzibekov.needfood_r.domain.models.Product
 
 class RecommendedListAdapter(
     private val recommendedList: ArrayList<Product>,
