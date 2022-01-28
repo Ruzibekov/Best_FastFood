@@ -2,6 +2,7 @@ package com.ruzibekov.needfood_r.view.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.ruzibekov.needfood_r.R
@@ -9,6 +10,7 @@ import com.ruzibekov.needfood_r.view.adapters.CategoriesListAdapter
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
 import com.ruzibekov.needfood_r.domain.usecase.GetProductsFromFirebase
 import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.domain.usecase.GetProductsByName
 
 
 class MainFragment : Fragment(R.layout.fragment_main){
@@ -24,6 +26,10 @@ class MainFragment : Fragment(R.layout.fragment_main){
     override fun onStart() {
         super.onStart()
         GetProductsFromFirebase().execute(binding)
+        val list = arrayListOf<Product>()
+        list.add(Product(name = "Burger"))
+        list.add(Product(name = "Pizza"))
+        Log.i("mylog", GetProductsByName().execute(list, "p").toString())
     }
 
     private fun createCategoriesList() {

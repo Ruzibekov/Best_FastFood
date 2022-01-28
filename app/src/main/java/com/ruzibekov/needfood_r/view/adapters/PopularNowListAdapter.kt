@@ -30,7 +30,6 @@ class PopularNowListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.productImage.setImageResource(R.drawable.image_noimage)
 
         Glide.with(holder.itemView).load(popularNowList[position].uri.toUri())
             .into(holder.productImage)

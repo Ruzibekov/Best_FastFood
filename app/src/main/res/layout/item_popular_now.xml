@@ -20,7 +20,7 @@
             android:layout_width="100dp"
             android:layout_height="70dp"
             android:layout_marginTop="12dp"
-            android:src="@drawable/image_beef_burger" />
+             />
 
         <TextView
             android:id="@+id/popular_product_name"
