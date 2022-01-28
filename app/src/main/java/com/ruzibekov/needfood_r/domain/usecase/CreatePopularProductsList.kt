@@ -1,11 +1,9 @@
 package com.ruzibekov.needfood_r.domain.usecase
 
 import android.os.Bundle
-import androidx.navigation.fragment.findNavController
-import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
 import com.ruzibekov.needfood_r.interfaces.ProductItemClick
-import com.ruzibekov.needfood_r.objects.Product
+import com.ruzibekov.needfood_r.domain.models.Product
 import com.ruzibekov.needfood_r.view.adapters.PopularNowListAdapter
 
 class CreatePopularProductsList : ProductItemClick {

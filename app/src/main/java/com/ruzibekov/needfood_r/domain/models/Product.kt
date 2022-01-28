@@ -1,6 +1,5 @@
-package com.ruzibekov.needfood_r.objects
+package com.ruzibekov.needfood_r.domain.models
 
-import android.net.Uri
 
 data class Product(
     var id: Int = 0,

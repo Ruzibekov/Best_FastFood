@@ -8,8 +8,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.objects.Product
-import com.ruzibekov.needfood_r.view.adapters.PopularNowListAdapter
+import com.ruzibekov.needfood_r.domain.models.Product
 
 class GetProductsFromFirebase {
 
