@@ -1,5 +1,8 @@
 package com.ruzibekov.needfood_r.domain.usecase
 
+import com.ruzibekov.needfood_r.domain.models.Product
+
+
 class GetProductsByName {
 
     /* Klassning vazifasi:
@@ -8,11 +11,20 @@ class GetProductsByName {
     * Birxil bo'lganlari filterList: ArrayList ga add qilinib, return qilinadi */
 
 
-    fun execute(){
+    fun execute(list:ArrayList<Product>,text:String): ArrayList<Product>{
+
+         var filterlist:ArrayList<Product> = ArrayList()
+        for (i in 0..list.lastIndex){
+           if (list[i].name.contains(text)){
+               filterlist.add(list[i])
+           }
+        }
+
+        return filterlist
+    }
         /*todo:
            Funksiya 2ta narsa qabul qiladi. ArrayList<Product> va String text
         *  Funksiya ArrayList<Product> qaytaradi*/
     }
 
 
-}
