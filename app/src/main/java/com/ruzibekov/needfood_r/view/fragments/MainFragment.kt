@@ -33,8 +33,7 @@ class MainFragment : Fragment(R.layout.fragment_main){
 
     override fun onStart() {
         super.onStart()
-        val products = arrayListOf<Product>()
-        GetProductsFromFirebase().execute(products, binding)
+        GetProductsFromFirebase().execute(binding)
     }
 
     private fun createCategoriesList() {

@@ -13,14 +13,14 @@ import com.ruzibekov.needfood_r.view.adapters.PopularNowListAdapter
 
 class GetProductsFromFirebase {
 
-    fun execute(products: ArrayList<Product>, binding: FragmentMainBinding) {
+    fun execute(binding: FragmentMainBinding) {
         val database = Firebase.database.getReference("Products")
-        getDatas(database, products, binding)
+        getDatas(database, binding)
     }
 
-    private fun getDatas(database: DatabaseReference, products: ArrayList<Product>, binding: FragmentMainBinding) {
+    private fun getDatas(database: DatabaseReference, binding: FragmentMainBinding) {
         database.addValueEventListener(object : ValueEventListener {
-
+            val products = arrayListOf<Product>()
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val product = Product()
