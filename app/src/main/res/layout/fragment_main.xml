@@ -16,22 +16,24 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main_fragment"
             style="@style/Widget.AppCompat.Toolbar"
+            app:navigationIcon="@drawable/ic_app"
+            app:title="NeedFood"
             android:layout_width="match_parent"
             android:layout_height="80dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_app" />
+<!--            <ImageView-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/ic_app" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="NeedFood"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:text="NeedFood"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="24sp" />-->
 
             <androidx.cardview.widget.CardView
                 android:layout_width="44dp"
