@@ -1,4 +1,4 @@
-package com.ruzibekov.needfood_r.view.activity
+package com.ruzibekov.needfood_r.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

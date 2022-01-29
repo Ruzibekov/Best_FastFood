@@ -1,4 +1,4 @@
-package com.ruzibekov.needfood_r.view.fragments
+package com.ruzibekov.needfood_r.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,13 +6,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
 import com.ruzibekov.needfood_r.domain.models.Product
 import com.ruzibekov.needfood_r.domain.usecase.GetProducts
 import com.ruzibekov.needfood_r.domain.usecase.GetProductsByName
-import com.ruzibekov.needfood_r.view.adapters.CategoriesListAdapter
+import com.ruzibekov.needfood_r.presentation.adapters.CategoriesListAdapter
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {

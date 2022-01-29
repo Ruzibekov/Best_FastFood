@@ -9,11 +9,11 @@ import com.google.firebase.ktx.Firebase
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
 import com.ruzibekov.needfood_r.domain.models.Product
 import com.ruzibekov.needfood_r.domain.usecase.CreatePopularProductsList
-import com.ruzibekov.needfood_r.view.fragments.MainFragment
 
 class ProductRepository(val parentFragment: Fragment?) {
 
     fun getDatas(binding: FragmentMainBinding) {
+
         val database = Firebase.database.getReference("Products")
         val products = arrayListOf<Product>()
         database.addValueEventListener(object : ValueEventListener {

@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeedFood_R">
         <activity
-            android:name="com.ruzibekov.needfood_r.view.activity.MainActivity"
+            android:name="com.ruzibekov.needfood_r.presentation.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

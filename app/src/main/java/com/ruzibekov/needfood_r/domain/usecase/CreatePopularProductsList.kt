@@ -7,11 +7,10 @@ import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
 import com.ruzibekov.needfood_r.interfaces.ProductItemClick
 import com.ruzibekov.needfood_r.domain.models.Product
-import com.ruzibekov.needfood_r.view.adapters.PopularNowListAdapter
-import com.ruzibekov.needfood_r.view.fragments.MainFragment
-import kotlin.coroutines.coroutineContext
+import com.ruzibekov.needfood_r.presentation.adapters.PopularNowListAdapter
 
 class CreatePopularProductsList(val parentFragment: Fragment?) : ProductItemClick {
+
     fun execute(popularNowList: ArrayList<Product>, binding: FragmentMainBinding){
         binding.mainScreen.popularNowList.adapter = PopularNowListAdapter(popularNowList, this)
     }

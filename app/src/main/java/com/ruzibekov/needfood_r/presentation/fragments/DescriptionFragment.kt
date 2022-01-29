@@ -1,4 +1,4 @@
-package com.ruzibekov.needfood_r.view.fragments
+package com.ruzibekov.needfood_r.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
