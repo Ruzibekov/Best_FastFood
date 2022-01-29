@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
 import com.ruzibekov.needfood_r.domain.models.Product
@@ -20,6 +21,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainBinding.bind(view)
+        binding.toolbarMainFragment.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.menu_search_button -> findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
+            }
+            true
+        }
         createCategoriesList()
         createRecommendedList()
     }
@@ -32,11 +39,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         list.add(Product(name = "Pizza"))
         Log.i("mylog", GetProductsByName().execute(list, "Pizza").toString())
 
-    }
-
-    fun navigate() {
-//        findNavController().navigate(R.id.action_mainFragment_to_descriptionFragment, bundle)
-//        findNavController().navigate(R.id.action_mainFragment_to_descriptionFragment)
     }
 
 

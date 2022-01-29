@@ -16,40 +16,14 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main_fragment"
             style="@style/Widget.AppCompat.Toolbar"
-            app:navigationIcon="@drawable/ic_app"
+            app:logo="@drawable/ic_app"
+            android:gravity="center"
             app:title="NeedFood"
+            android:padding="15dp"
+            android:paddingEnd="10dp"
+            app:menu="@menu/menu_homepage"
             android:layout_width="match_parent"
-            android:layout_height="80dp">
-
-<!--            <ImageView-->
-<!--                android:layout_width="40dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:scaleType="centerCrop"-->
-<!--                android:src="@drawable/ic_app" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:text="NeedFood"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="24sp" />-->
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="34dp"
-                app:cardCornerRadius="22dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_search" />
-            </androidx.cardview.widget.CardView>
-        </androidx.appcompat.widget.Toolbar>
+            android:layout_height="80dp"/>
     </androidx.cardview.widget.CardView>
 
 
