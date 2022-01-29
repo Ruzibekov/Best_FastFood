@@ -37,7 +37,8 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
     private fun setDatas(product: Product) {
         Glide.with(this).load(product.uri.toUri()).into(binding.productImage)
-        binding.productName.text = product.name
+        //binding.productName.text = product.name
+        binding.collapsingToolbar.title = product.name
         binding.productPrice.text = product.price
         binding.productLocation.text = product.location
         binding.productDescription.text = product.description
