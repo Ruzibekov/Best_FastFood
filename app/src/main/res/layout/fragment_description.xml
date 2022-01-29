@@ -122,12 +122,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="146dp"
             android:layout_height="57dp"
             android:text="Chat"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="57dp"
             android:layout_gravity="end"

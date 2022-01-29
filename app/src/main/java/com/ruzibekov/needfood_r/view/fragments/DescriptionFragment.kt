@@ -2,8 +2,10 @@ package com.ruzibekov.needfood_r.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentDescriptionBinding
 import com.ruzibekov.needfood_r.domain.models.Product
@@ -22,7 +24,8 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private fun getDatas() {
         val productDatas: ArrayList<String> =
             arguments?.getStringArrayList("product") as ArrayList<String>
-        val product = Product(productDatas[0].toInt(),
+        val product = Product(
+            productDatas[0].toInt(),
             productDatas[1],
             productDatas[2],
             productDatas[3],
@@ -33,9 +36,9 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     }
 
     private fun setDatas(product: Product) {
-//        binding.productImage.setImageResource(product.image)
+        Glide.with(this).load(product.uri.toUri()).into(binding.productImage)
         binding.productName.text = product.name
-        binding.productPrice.text = product.price.toString()
+        binding.productPrice.text = product.price
         binding.productLocation.text = product.location
         binding.productDescription.text = product.description
     }

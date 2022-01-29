@@ -4,16 +4,18 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
-import com.ruzibekov.needfood_r.view.adapters.CategoriesListAdapter
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.domain.usecase.GetProductsFromFirebase
 import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.domain.usecase.GetProducts
 import com.ruzibekov.needfood_r.domain.usecase.GetProductsByName
+import com.ruzibekov.needfood_r.view.adapters.CategoriesListAdapter
 
 
-class MainFragment : Fragment(R.layout.fragment_main){
+class MainFragment : Fragment(R.layout.fragment_main) {
     private lateinit var binding: FragmentMainBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,12 +27,19 @@ class MainFragment : Fragment(R.layout.fragment_main){
 
     override fun onStart() {
         super.onStart()
-        GetProductsFromFirebase().execute(binding)
+        GetProducts().execute(binding, parentFragment)
         val list = arrayListOf<Product>()
         list.add(Product(name = "Burger"))
         list.add(Product(name = "Pizza"))
-        Log.i("mylog", GetProductsByName().execute(list, "p").toString())
+        Log.i("mylog", GetProductsByName().execute(list, "Pizza").toString())
+
     }
+
+    fun navigate() {
+//        findNavController().navigate(R.id.action_mainFragment_to_descriptionFragment, bundle)
+//        findNavController().navigate(R.id.action_mainFragment_to_descriptionFragment)
+    }
+
 
     private fun createCategoriesList() {
         val categoriesList = arrayListOf<Product>()
@@ -56,7 +65,6 @@ class MainFragment : Fragment(R.layout.fragment_main){
 //            "Daxshat"))
         binding.mainScreen.categoriesList.adapter = CategoriesListAdapter(categoriesList)
     }
-
 
 
     @SuppressLint("UseRequireInsteadOfGet")
@@ -91,8 +99,8 @@ class MainFragment : Fragment(R.layout.fragment_main){
 //            RecommendedListAdapter(recommendedProductsList, this)
     }
 
-
-
-
+    fun showToast(){
+        Toast.makeText(context, "ishladi", Toast.LENGTH_SHORT).show()
+    }
 
 }
