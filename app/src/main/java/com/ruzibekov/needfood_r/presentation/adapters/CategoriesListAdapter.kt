@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ruzibekov.needfood_r.R
-import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.data.room.Product
 
 class CategoriesListAdapter(val categoriesList: ArrayList<Product>) : RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 

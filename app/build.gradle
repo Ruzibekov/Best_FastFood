@@ -58,7 +58,7 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:29.0.0'
 
-    def room_version="2.2.6"
+    def room_version = "2.4.1"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 }

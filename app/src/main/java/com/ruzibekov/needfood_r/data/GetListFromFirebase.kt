@@ -1,32 +1,30 @@
 package com.ruzibekov.needfood_r.data
 
-import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.domain.models.Product
-import com.ruzibekov.needfood_r.domain.usecase.CreatePopularProductsList
+import com.ruzibekov.needfood_r.data.room.Product
+import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
 
-class ProductRepository(val parentFragment: Fragment?) {
+class GetListFromFirebase {
 
-    fun getDatas(binding: FragmentMainBinding) {
+    fun execute(getProduct: ProductItem){
 
         val database = Firebase.database.getReference("Products")
-        val products = arrayListOf<Product>()
         database.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val product: Product = dataSnapshot.getValue(Product::class.java) ?: Product()
-                    products.add(product)
-                    CreatePopularProductsList(parentFragment).execute(products, binding)
+                    getProduct.product(product)
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {}
         })
+
+
     }
 }

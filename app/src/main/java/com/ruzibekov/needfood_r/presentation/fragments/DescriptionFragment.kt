@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentDescriptionBinding
-import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.data.room.Product
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private lateinit var binding: FragmentDescriptionBinding
@@ -24,15 +24,15 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private fun getDatas() {
         val productDatas: ArrayList<String> =
             arguments?.getStringArrayList("product") as ArrayList<String>
-        val product = Product(
-            productDatas[0].toInt(),
-            productDatas[1],
-            productDatas[2],
-            productDatas[3],
-            productDatas[4],
-            productDatas[5],
-            productDatas[6])
-        setDatas(product)
+//        val product = Product(
+//            productDatas[0].toInt(),
+//            productDatas[1],
+//            productDatas[2],
+//            productDatas[3],
+//            productDatas[4],
+//            productDatas[5],
+//            productDatas[6])
+//        setDatas(product)
     }
 
     private fun setDatas(product: Product) {

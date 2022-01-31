@@ -9,8 +9,8 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
-import com.ruzibekov.needfood_r.interfaces.ProductItem
-import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
+import com.ruzibekov.needfood_r.data.room.Product
 
 class PopularNowListAdapter(
     private val popularNowList: ArrayList<Product>,

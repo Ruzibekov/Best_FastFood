@@ -8,13 +8,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
+import com.ruzibekov.needfood_r.data.room.Product
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.domain.models.Product
-import com.ruzibekov.needfood_r.domain.usecase.GetListFromFirebase
-import com.ruzibekov.needfood_r.domain.usecase.GetProducts
-import com.ruzibekov.needfood_r.domain.usecase.GetProductsByName
-import com.ruzibekov.needfood_r.interfaces.ProductItem
+import com.ruzibekov.needfood_r.domain.usecase.GetProductsList
+import com.ruzibekov.needfood_r.domain.usecase.SaveProductsToStorage
 import com.ruzibekov.needfood_r.presentation.adapters.CategoriesListAdapter
+import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {
@@ -24,7 +23,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainBinding.bind(view)
         binding.toolbarMainFragment.setOnMenuItemClickListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.menu_search_button -> findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
             }
             true
@@ -35,18 +34,17 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onStart() {
         super.onStart()
-
-        GetListFromFirebase().execute(object : ProductItem{
+        GetProductsList().execute(object : ProductItem {
             override fun product(product: Product) {
-
+                Log.i("mylog", product.name)
+                SaveProductsToStorage().execute(product)
             }
         })
 
-        GetProducts().execute(binding, parentFragment)
-        val list = arrayListOf<Product>()
-        list.add(Product(name = "Burger"))
-        list.add(Product(name = "Pizza"))
-        Log.i("mylog", GetProductsByName().execute(list, "Pizza").toString())
+//        val list = arrayListOf<Product>()
+//        list.add(Product(name = "Burger"))
+//        list.add(Product(name = "Pizza"))
+//        Log.i("mylog", GetProductsByName().execute(list, "Pizza").toString())
 
     }
 
@@ -109,7 +107,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 //            RecommendedListAdapter(recommendedProductsList, this)
     }
 
-    fun showToast(){
+    fun showToast() {
         Toast.makeText(context, "ishladi", Toast.LENGTH_SHORT).show()
     }
 

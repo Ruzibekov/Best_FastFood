@@ -1,6 +1,6 @@
 package com.ruzibekov.needfood_r.domain.usecase
 
-import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.data.room.Product
 
 class GetProductsByName {
 
@@ -10,7 +10,7 @@ class GetProductsByName {
     * Birxil bo'lganlari filterList: ArrayList ga add qilinib, return qilinadi */
 
 
-    fun execute(list:ArrayList<Product>,text:String): ArrayList<Product>{
+    fun execute(list:ArrayList<Product>, text:String): ArrayList<Product>{
 
         var filterlist:ArrayList<Product> = ArrayList()
         for (i in 0..list.lastIndex){

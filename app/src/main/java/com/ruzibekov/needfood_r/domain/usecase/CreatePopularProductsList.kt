@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.interfaces.ProductItem
-import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
+import com.ruzibekov.needfood_r.data.room.Product
 import com.ruzibekov.needfood_r.presentation.adapters.PopularNowListAdapter
 
 class CreatePopularProductsList(val parentFragment: Fragment?) : ProductItem {
