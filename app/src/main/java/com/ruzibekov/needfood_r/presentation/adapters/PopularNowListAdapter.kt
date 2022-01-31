@@ -9,12 +9,12 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
-import com.ruzibekov.needfood_r.interfaces.ProductItemClick
+import com.ruzibekov.needfood_r.interfaces.ProductItem
 import com.ruzibekov.needfood_r.domain.models.Product
 
 class PopularNowListAdapter(
     private val popularNowList: ArrayList<Product>,
-    private val click: ProductItemClick,
+    private val click: ProductItem,
 ) :
     RecyclerView.Adapter<PopularNowListAdapter.ViewHolder>() {
 
@@ -37,7 +37,7 @@ class PopularNowListAdapter(
         holder.productName.text = popularNowList[position].name
         holder.productPrice.text = popularNowList[position].price
         holder.itemView.setOnClickListener {
-            click.onClick(popularNowList[position])
+            click.product(popularNowList[position])
         }
     }
 

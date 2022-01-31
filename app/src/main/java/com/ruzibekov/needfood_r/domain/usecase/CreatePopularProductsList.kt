@@ -5,17 +5,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.interfaces.ProductItemClick
+import com.ruzibekov.needfood_r.interfaces.ProductItem
 import com.ruzibekov.needfood_r.domain.models.Product
 import com.ruzibekov.needfood_r.presentation.adapters.PopularNowListAdapter
 
-class CreatePopularProductsList(val parentFragment: Fragment?) : ProductItemClick {
+class CreatePopularProductsList(val parentFragment: Fragment?) : ProductItem {
 
     fun execute(popularNowList: ArrayList<Product>, binding: FragmentMainBinding){
         binding.mainScreen.popularNowList.adapter = PopularNowListAdapter(popularNowList, this)
     }
 
-    override fun onClick(product: Product) {
+    override fun product(product: Product) {
         val bundle = Bundle()
         bundle.putStringArrayList("product", arrayListOf(
             product.id.toString(),

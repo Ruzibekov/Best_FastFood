@@ -8,12 +8,12 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
-import com.ruzibekov.needfood_r.interfaces.ProductItemClick
+import com.ruzibekov.needfood_r.interfaces.ProductItem
 import com.ruzibekov.needfood_r.domain.models.Product
 
 class RecommendedListAdapter(
     private val recommendedList: ArrayList<Product>,
-    private val itemClick: ProductItemClick
+    private val itemClick: ProductItem
 ) : RecyclerView.Adapter<RecommendedListAdapter.ViewHolder>(){
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,7 +28,7 @@ class RecommendedListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView).load(recommendedList[position].uri.toUri()).into(holder.image)
         holder.image.setOnClickListener{
-            itemClick.onClick(recommendedList[position])
+            itemClick.product(recommendedList[position])
         }
     }
 

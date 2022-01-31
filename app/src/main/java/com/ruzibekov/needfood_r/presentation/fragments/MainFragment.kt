@@ -10,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
 import com.ruzibekov.needfood_r.domain.models.Product
+import com.ruzibekov.needfood_r.domain.usecase.GetListFromFirebase
 import com.ruzibekov.needfood_r.domain.usecase.GetProducts
 import com.ruzibekov.needfood_r.domain.usecase.GetProductsByName
+import com.ruzibekov.needfood_r.interfaces.ProductItem
 import com.ruzibekov.needfood_r.presentation.adapters.CategoriesListAdapter
 
 
@@ -33,6 +35,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onStart() {
         super.onStart()
+
+        GetListFromFirebase().execute(object : ProductItem{
+            override fun product(product: Product) {
+
+            }
+        })
+
         GetProducts().execute(binding, parentFragment)
         val list = arrayListOf<Product>()
         list.add(Product(name = "Burger"))
