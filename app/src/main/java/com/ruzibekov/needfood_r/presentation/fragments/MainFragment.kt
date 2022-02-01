@@ -10,9 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.data.room.Product
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.domain.usecase.GetProductsList
+import com.ruzibekov.needfood_r.domain.interfaces.ProductObject
+import com.ruzibekov.needfood_r.domain.usecase.GetProductFromStorage
+import com.ruzibekov.needfood_r.domain.usecase.GetProductsListFromDatabase
 import com.ruzibekov.needfood_r.domain.usecase.SaveProductsToStorage
 import com.ruzibekov.needfood_r.presentation.adapters.CategoriesListAdapter
+import com.ruzibekov.needfood_r.presentation.adapters.PopularNowListAdapter
 import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
 
 
@@ -34,10 +37,18 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onStart() {
         super.onStart()
-        GetProductsList().execute(object : ProductItem {
-            override fun product(product: Product) {
-                Log.i("mylog", product.name)
-                SaveProductsToStorage().execute(product)
+
+        Thread {
+            GetProductsListFromDatabase().execute(object : ProductItem {
+                override fun product(product: Product) {
+                    SaveProductsToStorage().execute(product)
+                }
+            })
+        }.start()
+
+        GetProductFromStorage().execute(object : ProductObject {
+            override fun getProduct(list: List<Product>) {
+                createPopularProductsList(list)
             }
         })
 
@@ -45,7 +56,28 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 //        list.add(Product(name = "Burger"))
 //        list.add(Product(name = "Pizza"))
 //        Log.i("mylog", GetProductsByName().execute(list, "Pizza").toString())
+    }
 
+    private fun createPopularProductsList(list: List<Product>) {
+        binding.mainScreen.popularNowList.adapter =
+            PopularNowListAdapter(list as ArrayList<Product>, object : ProductItem {
+                override fun product(product: Product) {
+                    openProductDetails(product)
+                }
+            })
+    }
+
+    private fun openProductDetails(product: Product) {
+        val productArray = arrayListOf<String>()
+        productArray.add(product.name)
+        productArray.add(product.uri)
+        productArray.add(product.category)
+        productArray.add(product.location)
+        productArray.add(product.price)
+        productArray.add(product.description)
+        val bundle = Bundle()
+        bundle.putStringArrayList(DescriptionFragment.PRODUCT_KEY, productArray)
+        findNavController().navigate(R.id.action_mainFragment_to_descriptionFragment, bundle)
     }
 
 

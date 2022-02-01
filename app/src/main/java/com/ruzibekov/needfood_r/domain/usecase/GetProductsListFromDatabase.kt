@@ -5,7 +5,7 @@ import com.ruzibekov.needfood_r.data.GetListFromFirebase
 import com.ruzibekov.needfood_r.data.room.Product
 import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
 
-class GetProductsList {
+class GetProductsListFromDatabase {
 
     fun execute(getProduct: ProductItem){
 

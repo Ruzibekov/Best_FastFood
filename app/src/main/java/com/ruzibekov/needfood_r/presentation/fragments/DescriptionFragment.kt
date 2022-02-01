@@ -1,16 +1,22 @@
 package com.ruzibekov.needfood_r.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
-import com.ruzibekov.needfood_r.databinding.FragmentDescriptionBinding
 import com.ruzibekov.needfood_r.data.room.Product
+import com.ruzibekov.needfood_r.databinding.FragmentDescriptionBinding
+import java.util.ArrayList
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
+    companion object {
+        val PRODUCT_KEY = "product_key"
+    }
+
     private lateinit var binding: FragmentDescriptionBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -22,17 +28,18 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     }
 
     private fun getDatas() {
-        val productDatas: ArrayList<String> =
-            arguments?.getStringArrayList("product") as ArrayList<String>
-//        val product = Product(
-//            productDatas[0].toInt(),
-//            productDatas[1],
-//            productDatas[2],
-//            productDatas[3],
-//            productDatas[4],
-//            productDatas[5],
-//            productDatas[6])
-//        setDatas(product)
+        val productStringArray: ArrayList<String>? = arguments?.getStringArrayList(PRODUCT_KEY)
+
+        val product = Product(
+            productStringArray?.get(0) ?: "null",
+            productStringArray?.get(1) ?: "null",
+            productStringArray?.get(2) ?: "null",
+            productStringArray?.get(3) ?: "null",
+            productStringArray?.get(4) ?: "null",
+            productStringArray?.get(5) ?: "null",
+
+        )
+        setDatas(product)
     }
 
     private fun setDatas(product: Product) {
