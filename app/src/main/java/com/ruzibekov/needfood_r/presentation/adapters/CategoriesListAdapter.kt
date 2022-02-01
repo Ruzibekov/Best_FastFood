@@ -5,11 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
-import com.ruzibekov.needfood_r.data.room.Product
+import com.ruzibekov.needfood_r.domain.models.ProductCategory
 
-class CategoriesListAdapter(val categoriesList: ArrayList<Product>) : RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
+class CategoriesListAdapter(private val categoriesList: List<ProductCategory>) :
+    RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.categories_product_image)
@@ -17,12 +20,13 @@ class CategoriesListAdapter(val categoriesList: ArrayList<Product>) : RecyclerVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_categories, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_categories, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.image.setImageResource(categoriesList[position].image)
-        holder.name.text = categoriesList[position].name
+        Glide.with(holder.itemView).load(categoriesList[position].uri?.toUri()).into(holder.image)
+        holder.name.text = categoriesList[position].category
     }
 
     override fun getItemCount(): Int {

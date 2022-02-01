@@ -10,7 +10,7 @@ import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
 
 class GetListFromFirebase {
 
-    fun execute(getProduct: ProductItem){
+    fun getDatas(getProduct: ProductItem){
 
         val database = Firebase.database.getReference("Products")
         database.addValueEventListener(object : ValueEventListener {

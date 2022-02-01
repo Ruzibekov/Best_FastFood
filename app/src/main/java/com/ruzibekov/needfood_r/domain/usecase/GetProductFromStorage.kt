@@ -6,10 +6,8 @@ import com.ruzibekov.needfood_r.presentation.App
 
 class GetProductFromStorage {
 
-    fun execute(productObject: ProductObject){
-        Thread  {
+    fun execute(): List<Product>{
             val productDao = App.instance.database.productDao()
-            productObject.getProduct(productDao.getAllPhotos())
-        }.start()
+            return productDao.getAllPhotos()
     }
 }

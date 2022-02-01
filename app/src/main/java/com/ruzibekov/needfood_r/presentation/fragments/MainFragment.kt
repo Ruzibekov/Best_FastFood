@@ -10,11 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.data.room.Product
 import com.ruzibekov.needfood_r.databinding.FragmentMainBinding
-import com.ruzibekov.needfood_r.domain.interfaces.ProductObject
-import com.ruzibekov.needfood_r.domain.usecase.GetProductFromStorage
-import com.ruzibekov.needfood_r.domain.usecase.GetProductsListFromDatabase
-import com.ruzibekov.needfood_r.domain.usecase.SaveProductsToStorage
-import com.ruzibekov.needfood_r.presentation.adapters.CategoriesListAdapter
+import com.ruzibekov.needfood_r.domain.usecase.*
 import com.ruzibekov.needfood_r.presentation.adapters.PopularNowListAdapter
 import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
 
@@ -35,7 +31,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         createRecommendedList()
     }
 
-    override fun onStart() {
+    override fun onStart() { // Get Products
         super.onStart()
 
         Thread {
@@ -44,13 +40,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                     SaveProductsToStorage().execute(product)
                 }
             })
+            createPopularList(GetProductFromStorage().execute())
+            CreateCategoriesList(binding).execute(GetProductsCategories().execute())
         }.start()
 
-        GetProductFromStorage().execute(object : ProductObject {
-            override fun getProduct(list: List<Product>) {
-                createPopularProductsList(list)
-            }
-        })
 
 //        val list = arrayListOf<Product>()
 //        list.add(Product(name = "Burger"))
@@ -58,7 +51,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 //        Log.i("mylog", GetProductsByName().execute(list, "Pizza").toString())
     }
 
-    private fun createPopularProductsList(list: List<Product>) {
+    private fun createPopularList(list: List<Product>) {
         binding.mainScreen.popularNowList.adapter =
             PopularNowListAdapter(list as ArrayList<Product>, object : ProductItem {
                 override fun product(product: Product) {
@@ -103,7 +96,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 //            "MLunch",
 //            500,
 //            "Daxshat"))
-        binding.mainScreen.categoriesList.adapter = CategoriesListAdapter(categoriesList)
+
     }
 
 

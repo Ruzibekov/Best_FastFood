@@ -45,7 +45,4 @@ class PopularNowListAdapter(
         return popularNowList.size
     }
 
-    interface Click {
-        fun onClik(person: Product)
-    }
 }
