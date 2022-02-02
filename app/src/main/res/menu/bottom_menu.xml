@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/save"
-        android:title=""
-        app:showAsAction="ifRoom"
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/icon_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/menu_save"
         android:icon="@drawable/ic_ic_shopping"
-        />
+        android:title="Saved" />
 
-    <item android:id="@+id/home"
-        android:title=""
-        android:checked="true"
-        app:showAsAction="ifRoom"
-        />
-
-    <item android:id="@+id/account"
-        app:showAsAction="ifRoom"
+    <item
+        android:id="@+id/menu_account"
         android:icon="@drawable/ic_person"
-        android:title=""/>
+        android:title="Account" />
 
 </menu>

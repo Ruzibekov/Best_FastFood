@@ -37,7 +37,6 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             productStringArray?.get(3) ?: "null",
             productStringArray?.get(4) ?: "null",
             productStringArray?.get(5) ?: "null",
-
         )
         setDatas(product)
     }

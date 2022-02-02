@@ -15,34 +15,10 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_main" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomBar"
-        android:backgroundTint="@color/white"
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:fabCradleMargin="8dp"
-        app:fabCradleRoundedCornerRadius="15dp"
-        tools:ignore="BottomAppBar">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
-            android:layout_marginEnd="16dp"
-            app:menu="@menu/bottom_menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:labelVisibilityMode="unlabeled"
-            android:background="@android:color/transparent"/>
 
-    </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/iv_home"
-        android:backgroundTint="@color/white"
-        android:layout_gravity="center"
-        app:layout_anchor="@id/bottomBar"
-        android:src="@drawable/icon_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:tint="#242424"/>
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
