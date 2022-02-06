@@ -12,7 +12,7 @@ class CreateCategoriesList(private val binding: FragmentHomeBinding) {
     fun execute(categoriesList: List<ProductCategory>) {
         for (category in categoriesList)
             category.uri = getUriByCategory(category.category)
-        binding.mainScreen.categoriesList.adapter = CategoriesListAdapter(categoriesList)
+        binding.categoriesList.adapter = CategoriesListAdapter(categoriesList)
     }
 
     private fun getUriByCategory(category: String): String {

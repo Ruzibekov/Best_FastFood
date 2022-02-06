@@ -26,10 +26,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             true
         }
-    }
 
-    override fun onStart() { // Get Products
-        super.onStart()
         Thread {
             GetProductsListFromDatabase().execute(object : ProductItem {
                 override fun product(product: Product) {
@@ -39,16 +36,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             createPopularList(GetProductFromStorage().execute())
             CreateCategoriesList(binding).execute(GetProductsCategories().execute())
         }.start()
-
-
-//        val list = arrayListOf<Product>()
-//        list.add(Product(name = "Burger"))
-//        list.add(Product(name = "Pizza"))
-//        Log.i("mylog", GetProductsByName().execute(list, "Pizza").toString())
     }
 
+
+
     private fun createPopularList(list: List<Product>) {
-        binding.mainScreen.popularNowList.adapter =
+        binding.popularNowList.adapter =
             PopularNowListAdapter(list as ArrayList<Product>, object : ProductItem {
                 override fun product(product: Product) {
                     openProductDetails(product)

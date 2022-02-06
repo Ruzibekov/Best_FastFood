@@ -15,10 +15,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:background="@color/purple_200"
         android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        android:layout_height="60dp"
         app:menu="@menu/bottom_menu" />
 
 </RelativeLayout>

@@ -14,7 +14,6 @@ class GetListFromFirebase {
 
         val database = Firebase.database.getReference("Products")
         database.addValueEventListener(object : ValueEventListener {
-
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val product: Product = dataSnapshot.getValue(Product::class.java) ?: Product()
@@ -24,7 +23,5 @@ class GetListFromFirebase {
 
             override fun onCancelled(error: DatabaseError) {}
         })
-
-
     }
 }

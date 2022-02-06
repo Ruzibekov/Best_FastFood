@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".presentation.fragments.MainFragment">
 
@@ -16,24 +16,25 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main_fragment"
             style="@style/Widget.AppCompat.Toolbar"
-            app:logo="@drawable/ic_app"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:gravity="center"
-            app:title="NeedFood"
             android:padding="15dp"
             android:paddingEnd="10dp"
+            app:logo="@drawable/ic_app"
             app:menu="@menu/menu_homepage"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"/>
+            app:title="NeedFood" />
     </androidx.cardview.widget.CardView>
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollIndicators="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -77,10 +78,39 @@
             </RelativeLayout>
 
 
-            <include
-                android:id="@+id/main_screen"
-                layout="@layout/item_main_screen"/>
+            <TextView
+                style="@style/Title_TextView"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Categories" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_categories" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                style="@style/Title_TextView"
+                android:layout_marginStart="10dp"
+                android:text="Popular Now" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="5dp"
+                android:id="@+id/popular_now_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="7"
+                tools:listitem="@layout/item_popular_now" />
         </LinearLayout>
+
+
     </ScrollView>
 
 </LinearLayout>
