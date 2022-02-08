@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.domain.models.ProductCategory
+import com.ruzibekov.needfood_r.presentation.interfaces.CategoryProduct
 
-class CategoriesListAdapter(private val categoriesList: List<ProductCategory>) :
+class CategoriesListAdapter(private val categoriesList: List<ProductCategory>, private val category: CategoryProduct) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -27,6 +28,9 @@ class CategoriesListAdapter(private val categoriesList: List<ProductCategory>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView).load(categoriesList[position].uri?.toUri()).into(holder.image)
         holder.name.text = categoriesList[position].category
+        holder.itemView.setOnClickListener {
+            category.get(categoriesList[position])
+        }
     }
 
     override fun getItemCount(): Int {

@@ -8,7 +8,7 @@ class SaveProductsToStorage {
     fun execute(product: Product) {
         Thread {
             val productDao = App.instance.database.productDao()
-            productDao.addPhotos(product)
+            productDao.addProducts(product)
         }.start()
     }
 }

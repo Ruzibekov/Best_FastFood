@@ -1,16 +1,19 @@
 package com.ruzibekov.needfood_r.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.size
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ruzibekov.needfood_r.R
 import com.ruzibekov.needfood_r.data.room.Product
 import com.ruzibekov.needfood_r.databinding.FragmentHomeBinding
+import com.ruzibekov.needfood_r.domain.models.ProductCategory
 import com.ruzibekov.needfood_r.domain.usecase.*
 import com.ruzibekov.needfood_r.presentation.adapters.PopularNowListAdapter
+import com.ruzibekov.needfood_r.presentation.interfaces.CategoryProduct
 import com.ruzibekov.needfood_r.presentation.interfaces.ProductItem
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -22,7 +25,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view)
         binding.toolbarMainFragment.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.menu_search_button -> findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
+                R.id.menu_search_button -> navigateToProductsList()
             }
             true
         }
@@ -34,11 +37,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             })
             createPopularList(GetProductFromStorage().execute())
-            CreateCategoriesList(binding).execute(GetProductsCategories().execute())
+            CreateCategoriesList(binding).execute(GetProductsCategories().execute(),
+                object : CategoryProduct {
+                    override fun get(category: ProductCategory) {
+                        navigateToProductsList(category)
+                    }
+                })
         }.start()
+
     }
-
-
 
     private fun createPopularList(list: List<Product>) {
         binding.popularNowList.adapter =
@@ -60,5 +67,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val bundle = Bundle()
         bundle.putStringArrayList(DescriptionFragment.PRODUCT_KEY, productArray)
         findNavController().navigate(R.id.action_mainFragment_to_descriptionFragment, bundle)
+    }
+
+    private fun navigateToProductsList(category: ProductCategory = ProductCategory()) {
+        val bundle = Bundle()
+        bundle.putString(ProductsListFragment.CATEGORY_KEY, category.category)
+        findNavController().navigate(R.id.action_mainFragment_to_productsListFragment, bundle)
     }
 }

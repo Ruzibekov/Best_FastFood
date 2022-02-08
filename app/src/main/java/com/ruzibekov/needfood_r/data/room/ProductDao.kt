@@ -9,10 +9,10 @@ import com.ruzibekov.needfood_r.domain.models.ProductCategory
 @Dao
 interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addPhotos(product: Product)
+    fun addProducts(product: Product)
 
     @Query("SELECT * FROM product")
-    fun getAllPhotos(): List<Product>
+    fun getAllProducts(): List<Product>
 
     @Query("SELECT category FROM product")
     fun getAllCategories(): List<ProductCategory>

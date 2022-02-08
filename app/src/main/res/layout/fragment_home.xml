@@ -107,11 +107,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popular_now_list"
-                android:nestedScrollingEnabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/main_layout"
                 android:layout_marginTop="5dp"
+                android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:spanCount="2"
                 tools:itemCount="7"
